@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\ActivationToken;
 use App\Models\Address;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -19,6 +18,7 @@ return new class extends Migration
             $table->double('nid');
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
+            $table->string('address')->nullable();
             $table->string('phone')->unique()->nullable();
             $table->string('email')->unique()->nullable();
             $table->boolean('active')->default(false);
@@ -26,7 +26,6 @@ return new class extends Migration
             $table->foreignIdFor(Address::class)->nullable();
             $table->string('password');
             $table->rememberToken();
-            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -1,9 +1,12 @@
 <?php
 
-use App\Models\Provider;
+use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\API\ProviderController;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware('auth:sanctum')->group(function () {
-    Route::get('/providers', [Provider::class, 'index']);
-    Route::get('/provider/{id}', [Provider::class, 'show']);
-});
+Route::post('/login', [AuthController::class, 'login']);
+
+// Route::middleware('auth:customer')->group(function ($request) {
+    Route::get('/providers', [ProviderController::class, 'index']);
+    Route::get('/provider/{id}', [ProviderController::class, 'show']);
+// });

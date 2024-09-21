@@ -6,14 +6,14 @@ use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens as SanctumHasApiTokens;
+use Laravel\Sanctum\hasapitokens;
 
 /**
  * @method \App\Models\Address|\Illuminate\Support\Collection|null syncAddress(array $shippingAddress)
  */
 class Customer extends Authenticatable
 {
-    use CanResetPassword, SanctumHasApiTokens, HasFactory, Notifiable;
+    use CanResetPassword, HasApiTokens, HasFactory, Notifiable;
 
     /**
      * The attributes that should be hidden for serialization.
@@ -43,6 +43,11 @@ class Customer extends Authenticatable
     public function tickets()
     {
         // return $this->hasMany(Ticket::class)->orderByDesc('created_at');
+    }
+
+    public function getNameAttribute()
+    {
+        return $this->first_name . ' ' . $this->last_name;
     }
 
     public function scopeOrdered($query)

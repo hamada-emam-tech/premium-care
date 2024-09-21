@@ -6,9 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\API\Controller;
 use App\Models\Customer;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Validation\Rule;
-use Illuminate\Validation\Rules\Password;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
 
 class AuthController extends Controller
 {
@@ -19,25 +19,26 @@ class AuthController extends Controller
      */
     public function login(Request $request): JsonResponse
     {
-        $request->validate([
-            'uid' => [
+        $validator = Validator::make($request->all(), [
+            'nid' => [
                 'required',
-                'email',
-                Rule::exists(Customer::class, 'uid'),
+                Rule::exists(Customer::class, 'nid'),
             ],
-            'password' => [
-                'required',
-                Password::min(6),
-            ],
+            'password' => 'required|string|min:6',
         ]);
+
+        if ($validator->fails()) {
+            return $this->sendError('validation_error', $validator->errors(), JsonResponse::HTTP_UNPROCESSABLE_ENTITY);
+        }
         /** @var Customer */
-        $customer = Customer::where('uid', $request->uid)->first();
+        $customer = Customer::where('nid',  $request->nid)->first();
+
         if ($customer) {
             if (! $customer->active) {
-                // throw new GraphQLException('1', 'Email not verified', 'LOGIN');
+                return $this->sendError('inactive_account', ['error' => 'Customer is inactive'], JsonResponse::HTTP_UNAUTHORIZED);
             }
             if (! $customer || ! Hash::check($request->password, $customer->password)) {
-                // throw new GraphQLException('1', 'The provided credentials are incorrect.', 'authentication');
+                return $this->sendError('credentials_error', ['error' => 'There is an error credentials'], JsonResponse::HTTP_UNAUTHORIZED);
             }
 
             $success['token'] =  $customer->createToken('MyApp')->plainTextToken;

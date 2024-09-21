@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('providers', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('address');
+            $table->string('address')->nullable();
+            $table->string('website')->nullable();
             $table->string('phone')->nullable();
             $table->string('email')->nullable();
             $table->string('type')->nullable();
