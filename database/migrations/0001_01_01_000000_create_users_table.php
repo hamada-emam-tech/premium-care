@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Address;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,9 +15,18 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('email')->unique();
+            $table->string('email')->unique()->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+
+            $table->enum('type', ['user', 'customer'])->default('user');
+            $table->uuid()->nullable();
+            $table->string('nid')->nullable();
+            $table->string('address')->nullable();
+            $table->string('phone')->unique()->nullable();
+            $table->boolean('active')->default(false);
+            $table->string('notes')->nullable();
+            $table->foreignIdFor(Address::class)->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

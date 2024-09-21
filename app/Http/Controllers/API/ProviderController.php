@@ -35,15 +35,10 @@ class ProviderController extends Controller
         if ($request->filled('latitude') && $request->filled('longitude')) {
             $latitude = $request->input('latitude');
             $longitude = $request->input('longitude');
-            $distance = $request->input('distance', 10);
+            $distance = $request->input('distance', 1);
 
             $query->whereRaw(
-                "
-            ( 6371 * acos( cos( radians(?) ) *
-            cos( radians(latitude) )
-            * cos( radians(longitude) - radians(?) )
-            + sin( radians(?) ) *
-            sin( radians(latitude) ) ) ) < ?",
+                "(6371 * acos(cos(radians(?)) * cos(radians(latitude)) * cos(radians(longitude) - radians(?)) + sin(radians(?)) * sin(radians(latitude)))) < ?",
                 [$latitude, $longitude, $latitude, $distance]
             );
         }

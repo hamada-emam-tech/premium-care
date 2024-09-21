@@ -3,13 +3,11 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
  */
-class CustomerFactory extends Factory
+class UserFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -19,13 +17,13 @@ class CustomerFactory extends Factory
     public function definition(): array
     {
         return [
-            'first_name' => 'test',
-            'last_name' => 'customer',
+            'name' => 'test customer',
             'email' => "test@gmail.com",
-            'uuid' => "jiajsoadiaspahda",
+            'type' => "customer",
+            'uuid' => "sdfrhtistss",
             'address' => "test address",
             'phone' => "01201478220",
-            'nid' => "123456789542585",
+            'nid' => "123456789",
             'active' => true,
             'password' => '$2y$12$Vs/TH.i74LnJaepIAE7JjeYBT6zOHjZfJqVPXDvC3rH.ghwOdpZOW',
         ];

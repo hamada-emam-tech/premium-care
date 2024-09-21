@@ -2,10 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Customer;
-use App\Models\User;
-use Faker\Core\Uuid;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\TicketDetail;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -16,6 +13,8 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call(ProviderSeeder::class);
-        $this->call(CustomerSeeder::class);
+        $this->call(UserSeeder::class);
+        $this->call(TicketSeeder::class);
+        $this->call(TicketDetail::class);
     }
 }
