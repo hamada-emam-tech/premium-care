@@ -50,4 +50,35 @@ class AuthController extends Controller
             return $this->sendError('Unauthorised.', ['error' => 'Unauthorised'], JsonResponse::HTTP_UNAUTHORIZED);
         }
     }
+
+    /**
+     * Handle password change request
+     */
+    public function changePassword(Request $request)
+    {
+        // Validation rules
+        $validator = Validator::make($request->all(), [
+            'current_password' => 'required',
+            'new_password' => 'required|min:8|confirmed',
+        ]);
+
+        // Return validation errors if any
+        if ($validator->fails()) {
+            return $this->sendError('validation_error', $validator->errors(), JsonResponse::HTTP_UNPROCESSABLE_ENTITY);
+        }
+
+        /** @var \App\Models\User $user */
+        $user = $request->user(); // Get the authenticated user
+
+        // Check if current password is correct
+        if (!Hash::check($request->input('current_password'), $user->password)) {
+            return $this->sendError('credentials_error', ['error' => 'There is an error credentials'], JsonResponse::HTTP_UNAUTHORIZED);
+        }
+
+        // Update password
+        $user->password = Hash::make($request->input('new_password'));
+        $user->save();
+
+        return $this->sendResponse(true, 'Password changed successfully');
+    }
 }

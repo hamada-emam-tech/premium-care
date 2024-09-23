@@ -20,6 +20,10 @@ class TicketController extends Controller
             $tickets->where('status', $request->input('status'));
         }
 
+        if ($request->filled('type')) {
+            $tickets->where('type', $request->input('type'));
+        }
+
         if ($request->filled('subject')) {
             $tickets->where('subject', 'like', '%' . $request->input('subject') . '%');
         }
