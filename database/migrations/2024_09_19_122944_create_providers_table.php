@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('website')->nullable();
             $table->string('phone')->nullable();
             $table->string('email')->nullable();
+            $table->string('area')->nullable();
+            $table->string('city')->nullable();
             $table->string('type')->nullable();
             $table->decimal('latitude', 10, 8)->nullable();
             $table->decimal('longitude', 11, 8)->nullable();

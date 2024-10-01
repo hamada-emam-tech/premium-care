@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('subject');
             $table->text('description');
             $table->enum('status', ['open', 'pending', 'closed'])->default('open');
+            $table->enum('type', ['complaint', 'request'])->default('complaint');
             $table->timestamps();
         });
     }

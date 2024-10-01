@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Route;
 Route::post('/login', [AuthController::class, 'login']);
 
 Route::middleware('auth:sanctum')->group(function ($request) {
+    Route::post('/change-password', [AuthController::class, 'changePassword']);
+
     Route::get('/providers', [ProviderController::class, 'index']);
     Route::get('/provider/{id}', [ProviderController::class, 'show']);
 
@@ -16,6 +18,5 @@ Route::middleware('auth:sanctum')->group(function ($request) {
     Route::post('ticket', [TicketController::class, 'store']);
     Route::put('ticket/{id}', [TicketController::class, 'update']);
     Route::delete('ticket/{id}', [TicketController::class, 'destroy']);
-
     Route::post('/ticket/{ticket}/details', [TicketController::class, 'detailStore']);
 });

@@ -32,6 +32,14 @@ class ProviderController extends Controller
             $query->where('is_emergency_available', $request->input('is_emergency_available'));
         }
 
+        if ($request->filled('area')) {
+            $query->where('area', $request->input('area'));
+        }
+
+        if ($request->filled('city')) {
+            $query->where('city', $request->input('city'));
+        }
+
         if ($request->filled('latitude') && $request->filled('longitude')) {
             $latitude = $request->input('latitude');
             $longitude = $request->input('longitude');
