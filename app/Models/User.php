@@ -20,6 +20,7 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    protected $guarded = [];
     protected $hidden = [
         'password',
         'remember_token',
@@ -48,5 +49,10 @@ class User extends Authenticatable
     public function scopeOrdered($query)
     {
         $query->orderbydesc('created_at');
+    }
+
+    public function entity()
+    {
+        return $this->belongsTo(User::class, 'entity_id');
     }
 }
