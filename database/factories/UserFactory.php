@@ -18,7 +18,7 @@ class UserFactory extends Factory
     {
         return [
             'name' => 'test customer',
-            'email' => "test@gmail.com",
+            'email' => "customer@customer.com",
             'type' => "customer",
             'uuid' => "sdfrhtistss",
             'address' => "test address",
