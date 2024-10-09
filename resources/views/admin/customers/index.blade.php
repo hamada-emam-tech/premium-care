@@ -33,6 +33,7 @@
                 <thead>
                 <tr>
                     <th>#</th>
+                    <th>ID</th>
                     <th>اسم الفرد</th>
                     <th>صورة الفرد</th>
                     <th>تاريخ الاصدار</th>
@@ -52,6 +53,7 @@
                 @foreach($customers as $customer)
                     <tr>
                         <td>{{$loop->iteration}}</td>
+                        <td>{{$customer->nid}}</td>
                         <td>{{$customer->name}}</td>
                         <td>
                             @if(!$customer->image)
@@ -103,7 +105,10 @@
 
                 </tbody>
             </table>
-            {{$customers->links()}}
+                <!-- Pagination with aria-label -->
+        <nav aria-label="Pagination Navigation">
+            {{ $customers->links('vendor.pagination.bootstrap-4') }}
+        </nav>
         </div>
 
 </div>

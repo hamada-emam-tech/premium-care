@@ -15,7 +15,7 @@
                 <div class="right-side">
                     <h6 class="name">الهيئات الطبية</h6>
                     <h3 class="amount"><span class="num-stat" data-goal="{{\App\Models\Provider::count()}}">{{\App\Models\Provider::count()}}</span></h3>
-                    <a href="#" class="link-view">كل الهيئات الطبية</a>
+                    <a href="{{route('admin.providers.index')}}" class="link-view">كل الهيئات الطبية</a>
                 </div>
                 <div class="left-side">
                     <p class="status-number up"> </i></p>

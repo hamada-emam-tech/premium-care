@@ -33,6 +33,7 @@
                 <thead>
                 <tr>
                     <th>#</th>
+                    <th>ID</th>
                     <th>اسم المنشئة</th>
                     <th>عدد التابعين للمنشئة</th>
                     <th>تاريخ الاصدار</th>
@@ -50,6 +51,7 @@
                 @foreach($entities as $entity)
                     <tr>
                         <td>{{$loop->iteration}}</td>
+                        <td>{{$entity->nid}}</td>
                         <td>{{$entity->name}}</td>
                         <td>{{$entity->entity_no}}</td>
                         <td>{{$entity->release_date}}</td>
@@ -82,7 +84,10 @@
 
                 </tbody>
             </table>
-            {{$entities->links()}}
+            <!-- Pagination with aria-label -->
+        <nav aria-label="Pagination Navigation">
+            {{ $entities->links('vendor.pagination.bootstrap-4') }}
+        </nav>
         </div>
 
 </div>

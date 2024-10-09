@@ -46,6 +46,14 @@
     </label>
 </div>
 </div>
+<div class="col-12 col-md-4 col-lg-3">
+    <div class="inp-holder">
+    <label class="special-input">
+        <span>  ID</span>
+        <input type="text" name="nid" value="{{ old('nid',isset($entity) ? $entity->nid : '') }}" class="form-control">
+    </label>
+</div>
+</div>
 
 <div class="col-12 m-0">
     <hr class="m-0 border-0">

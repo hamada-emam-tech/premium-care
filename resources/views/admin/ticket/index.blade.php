@@ -93,7 +93,10 @@
 
                 </tbody>
             </table>
-            {{ $tickets->links() }}
+              <!-- Pagination with aria-label -->
+        <nav aria-label="Pagination Navigation">
+            {{ $tickets->links('vendor.pagination.bootstrap-4') }}
+        </nav>
         </div>
     </div>
 @endsection

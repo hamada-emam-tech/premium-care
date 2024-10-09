@@ -10,6 +10,7 @@ use App\Models\Article;
 use App\Traits\JodaResource;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\Rule;
 
 class CustomerController extends Controller
 {
@@ -72,15 +73,27 @@ class CustomerController extends Controller
 
     public function store(Request $request)
     {
-        $data = $this->validateStoreRequest();
-        // $data =  $request->validate([
-        //     'name' => 'required',
-        //     'image' => 'required',
-        //     'customer_type' => 'required',
-        //     'entity_id' => 'nullable',
-        //     'release_date' => 'nullable',
-        //     'phone' => 'required|unique:users,phone',
-        // ]);
+
+        $data =   $request->validate([
+            'phone' => [
+                'required',
+                Rule::unique('users')->where(function ($query) {
+                    return $query->where('type', 'customer');
+                }),
+            ],
+            'nid' => [
+                'required',
+                Rule::unique('users')->where(function ($query) {
+                    return $query->where('type', 'customer'); // Change the type if needed
+                }),
+            ],
+            'name' => 'required',
+            'image' => 'required',
+            'customer_type' => 'required',
+
+            'entity_id' => 'nullable',
+            'release_date' => 'nullable'
+        ]);
         $data['type'] = "customer";
         $data['active'] = 1;
         $data['password'] = '$2y$12$Vs/TH.i74LnJaepIAE7JjeYBT6zOHjZfJqVPXDvC3rH.ghwOdpZOW';
@@ -107,9 +120,20 @@ class CustomerController extends Controller
             'name' => 'required',
             'image' => 'nullable',
             'customer_type' => 'required',
+            'nid' => [
+                'required',
+                Rule::unique('users')->where(function ($query) {
+                    return $query->where('type', 'customer'); // Change the type if needed
+                })->ignore($user->id), // Ignore the current user's ID
+            ],
             'entity_id' => 'nullable',
             'release_date' => 'nullable',
-            'phone' => 'required|unique:users,phone,' . $user->id,
+            'phone' => [
+                'required',
+                Rule::unique('users')->where(function ($query) {
+                    return $query->where('type', 'customer');
+                })->ignore($user->id), // Ignoring the current user's ID
+            ],
         ]);
         if ($photo = $request->file('image')) {
             delete_file($user->image);
