@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/login', [AuthController::class, 'login']);
 
+Route::get('/settings', function () {
+    return response()->json(['settings' => setting()->all()]);
+});
+
 Route::middleware('auth:sanctum')->group(function ($request) {
     Route::post('/change-password', [AuthController::class, 'changePassword']);
 
