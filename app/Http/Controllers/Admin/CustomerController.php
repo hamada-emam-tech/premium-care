@@ -39,7 +39,7 @@ class CustomerController extends Controller
             } elseif (\request()->status == "warning") {
                 // Warning: Entities whose expire_date is today
                 return $query->latest()
-                    ->where('expire_date', '=', now()->toDateString()) // Expire date is today
+                    ->where('expire_date', '=', now()->addMonth()->toDateString()) // Expire date one month from today
                     ->where('type', 'customer')
                     ->paginate(10);
             } elseif (\request()->status == "danger") {

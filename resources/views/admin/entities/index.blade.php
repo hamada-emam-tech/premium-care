@@ -22,7 +22,7 @@
                         <option value="">-- اختر الحالة --</option>
                         <option value="">--  الكل --</option>
                         <option value="good">قيد الاشتراك</option>
-                        <option value="warning"> تنتهي اليوم</option>
+                        <option value="warning"> تنتهي بعد شهر</option>
                         <option value="danger">  تم الانتهاء</option>
                     </select>
 

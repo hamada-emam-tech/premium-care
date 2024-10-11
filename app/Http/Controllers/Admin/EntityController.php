@@ -29,9 +29,9 @@ class EntityController extends Controller
                     ->where('type', 'entity')
                     ->paginate(10);
             } elseif (\request()->status == "warning") {
-                // Warning: Entities whose expire_date is today
+                // Warning: Entities whose expire_date after one month
                 return $query->latest()
-                    ->where('expire_date', '=', now()->toDateString()) // Expire date is today
+                    ->where('expire_date', '=', now()->addMonth()->toDateString()) // Expire date one month from today
                     ->where('type', 'entity')
                     ->paginate(10);
             } elseif (\request()->status == "danger") {
