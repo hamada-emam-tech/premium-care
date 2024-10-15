@@ -50,7 +50,7 @@
     <div class="inp-holder">
     <label class="special-input">
         <span>  ID</span>
-        <input type="text" name="nid" value="{{ old('nid',isset($entity) ? $entity->nid : '') }}" class="form-control">
+        <input type="text" name="uuid" value="{{ old('uuid',isset($entity) ? $entity->uuid : '') }}" class="form-control">
     </label>
 </div>
 </div>

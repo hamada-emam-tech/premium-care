@@ -175,6 +175,6 @@ return [
         'entity_no' =>  'عدد التابعين للمنشئة',
         'release_date' =>  'تاريخ الاصدار',
         'expire_date' =>  'تاريخ الانتهاء',
-        'nid'   => 'id'
+        'uuid'   => 'id'
     ],
 ];

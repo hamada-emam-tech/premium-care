@@ -51,7 +51,7 @@
                 @foreach($entities as $entity)
                     <tr>
                         <td>{{$loop->iteration}}</td>
-                        <td>{{$entity->nid}}</td>
+                        <td>{{$entity->uuid}}</td>
                         <td>{{$entity->name}}</td>
                         <td>{{$entity->entity_no}}</td>
                         <td>{{$entity->release_date}}</td>

@@ -53,7 +53,7 @@
                 @foreach($customers as $customer)
                     <tr>
                         <td>{{$loop->iteration}}</td>
-                        <td>{{$customer->nid}}</td>
+                        <td>{{$customer->uuid}}</td>
                         <td>{{$customer->name}}</td>
                         <td>
                             @if(!$customer->image)

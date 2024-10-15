@@ -59,7 +59,7 @@ class EntityController extends Controller
                     return $query->where('type', 'entity');
                 }),
             ],
-            'nid' => [
+            'uuid' => [
                 'required',
                 Rule::unique('users')->where(function ($query) {
                     return $query->where('type', 'entity'); // Change the type if needed
@@ -91,7 +91,7 @@ class EntityController extends Controller
                     return $query->where('type', 'entity');
                 })->ignore($user->id), // Ignoring the current user's ID
             ],
-            'nid' => [
+            'uuid' => [
                 'required',
                 Rule::unique('users')->where(function ($query) {
                     return $query->where('type', 'entity'); // Change the type if needed

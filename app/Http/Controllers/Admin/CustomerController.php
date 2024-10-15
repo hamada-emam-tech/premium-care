@@ -81,7 +81,7 @@ class CustomerController extends Controller
                     return $query->where('type', 'customer');
                 }),
             ],
-            'nid' => [
+            'uuid' => [
                 'required',
                 Rule::unique('users')->where(function ($query) {
                     return $query->where('type', 'customer'); // Change the type if needed
@@ -120,7 +120,7 @@ class CustomerController extends Controller
             'name' => 'required',
             'image' => 'nullable',
             'customer_type' => 'required',
-            'nid' => [
+            'uuid' => [
                 'required',
                 Rule::unique('users')->where(function ($query) {
                     return $query->where('type', 'customer'); // Change the type if needed

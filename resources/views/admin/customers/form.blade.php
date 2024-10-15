@@ -77,7 +77,7 @@
     <div class="inp-holder">
     <label class="special-input">
         <span>  ID</span>
-        <input type="text" name="nid" value="{{ old('nid',isset($customer) ? $customer->nid : '') }}" class="form-control">
+        <input type="text" name="uuid" value="{{ old('uuid',isset($customer) ? $customer->uuid : '') }}" class="form-control">
     </label>
 </div>
 </div>
