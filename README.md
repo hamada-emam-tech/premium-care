@@ -1,66 +1,216 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Premium Care – Backend Dashboard
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Laravel](https://img.shields.io/badge/laravel-%23FF2D20.svg?style=flat&logo=laravel&logoColor=white)
+![PHP](https://img.shields.io/badge/php-%23777BB4.svg?style=flat&logo=php&logoColor=white)
 
-## About Laravel
+**Premium Care** is a backend system designed to help companies offer medical and care services to their employees through a network of contracted providers such as clinics, hospitals, nurses, doctors, labs, and specialized care centers.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+> This system allows organizations to allocate medical credits, manage employee access, track service utilization, and maintain strong relationships with providers through a secure and efficient dashboard.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 🚀 Overview
 
-## Learning Laravel
+Premium Care provides companies with an elegant and centralized way to:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+* **Manage contracted medical providers** (hospitals, clinics, labs, pharmacies, etc.)
+* **Register companies** and their employees
+* **Allocate health credits** to employees
+* **Allow employees to use credits** at contracted providers
+* **Track service usage** and spending
+* **Handle invoices**, approvals, and visit records
+* **Provide full administrative control** through a backend dashboard
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+The system is built for **B2B medical partnerships**, simplifying the process of offering medical benefits.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+---
 
-## Laravel Sponsors
+## 🩺 Key Features
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### 🏥 Provider Management
+* Add/Manage contracted medical providers.
+* Store provider details: name, type, address, services.
+* Activate/Deactivate providers.
+* Manage pricing agreements.
 
-### Premium Partners
+### 👥 Company & Employee Management
+* Register companies.
+* Add employees under each company.
+* Track employee eligibility.
+* Assign monthly/yearly medical credit packages.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+### 💳 Credit Management
+* Set credit limits.
+* Auto-deduct service costs from available credit.
+* Prevent over-spending.
+* Generate credit usage reports.
 
-## Contributing
+### 📝 Service & Visit Tracking
+* Log employee visits to providers.
+* Record the type of service, date, and price.
+* Auto-calculate credit deduction.
+* Admin approval workflow.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 🧾 Invoicing & Reporting
+* Provider invoices.
+* Company billing.
+* Monthly/quarterly reports.
+* Analytics dashboard.
 
-## Code of Conduct
+---
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## 🏗️ Tech Stack
 
-## Security Vulnerabilities
+| Layer | Technology |
+| :--- | :--- |
+| **Framework** | Laravel |
+| **Database** | MySQL / PostgreSQL |
+| **Auth** | Laravel Sanctum |
+| **Dashboard** | Blade / AdminLTE (or similar) |
+| **Server** | Apache / Nginx |
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+---
 
-## License
+## 📦 Project Structure
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```text
+premium-care/
+├── app/
+│   ├── Models/
+│   ├── Http/Controllers/
+│   ├── Services/
+│   ├── Policies/
+│   └── ...
+├── database/
+│   ├── migrations/
+│   └── seeders/
+├── routes/
+│   ├── web.php
+│   └── api.php
+└── README.md
+
+🛠️ Installation & Setup
+
+1️⃣ Clone the Repository
+
+git clone [https://github.com/hamada-emam-tech/premium-care.git](https://github.com/hamada-emam-tech/premium-care.git)
+cd premium-care
+
+
+2️⃣ Install Dependencies
+
+composer install
+npm install && npm run build
+
+
+3️⃣ Configure Environment
+
+cp .env.example .env
+php artisan key:generate
+
+
+Make sure to set your database, mail, APP_URL, and storage credentials in the .env file.
+
+4️⃣ Run Migrations
+
+php artisan migrate --seed
+
+
+5️⃣ Start the Server
+
+php artisan serve
+
+
+🔐 Authentication
+
+Premium Care uses Laravel Sanctum to secure:
+
+Admin dashboard
+
+Company login
+
+API access for mobile or external systems
+
+Token-based authentication ensures flexibility and security.
+
+📘 Example API Endpoints
+
+Companies
+
+GET    /api/companies
+POST   /api/companies
+GET    /api/companies/{id}
+PUT    /api/companies/{id}
+DELETE /api/companies/{id}
+
+
+Employees
+
+POST   /api/employees
+GET    /api/employees/{company_id}
+PUT    /api/employees/{id}/credit
+
+
+Providers
+
+POST   /api/providers
+GET    /api/providers
+GET    /api/providers/{id}
+
+
+📊 Dashboard Overview
+
+The admin dashboard provides real-time insights:
+
+Total companies & employees
+
+Contracted providers count
+
+Monthly credit usage
+
+Top performing providers
+
+Pending invoices
+
+Service analytics
+
+🎯 Purpose & Vision
+
+Premium Care aims to make medical benefits accessible through direct partnerships, not insurance.
+
+The vision includes:
+
+Lower company costs.
+
+Better employee wellbeing.
+
+Transparent spending records.
+
+Stronger provider relationships.
+
+Future roadmap:
+
+📱 Employee mobile app.
+
+📲 QR-based visit authorization.
+
+🔄 Automated invoicing.
+
+⚡ Real-time credit updates.
+
+🤝 Contributing
+
+Contributions are welcome!
+
+Fork the repo.
+
+Create a new branch.
+
+Commit changes.
+
+Push and submit a PR.
+
+📄 License
+
+This project is open-source and available under the MIT License.
